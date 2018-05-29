@@ -1,0 +1,93 @@
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+
+		<title>根据ip定位</title>
+
+		
+		
+	</head>
+	<body>
+	<script src="./jquery-3.3.1.js"></script>	
+	<script>
+		$(function(){
+			// var o1 = { a:'a' },
+			//  o2 = { b:'b' };
+			// var o3 = $.extend({}, o1, o2) 
+			// console.log(o3,o1)
+			var a=[
+				{id:'1',name:"1",length:"2"},
+				{id:'1',name:"2",length:"0"},
+				{id:'1',name:"3",length:"0"},
+				{id:'a',name:"a",length:"1"},
+				{id:'b',name:"b",length:"0"},
+			],
+			b=[
+				{id:'1',name:"2",length:"0"},
+				{id:'1',name:"3",length:"0"},
+				{id:'1',name:"4",length:"0"},
+				{id:'1',name:"5",length:"0"},
+			];
+			var o3 = $.extend({}, a, b) 
+
+			
+			var c=a.concat(b);
+
+			
+			
+			function uniq(array){
+				array=array.sort()
+			var temp = []; //一个新的临时数组
+			for(var i = 0; i < array.length; i++){
+				if(temp.indexOf(array[i]) == -1){
+					temp.push(array[i]);
+				}
+			}
+			return temp;
+		}
+		c=uniq(c)
+		console.log(c)
+		
+		function isObjectValueEqual(a, b) {
+    // Of course, we can do it use for in 
+    // Create arrays of property names
+    var aProps = Object.getOwnPropertyNames(a);
+    var bProps = Object.getOwnPropertyNames(b);
+ 
+    // If number of properties is different,
+    // objects are not equivalent
+    if (aProps.length != bProps.length) {
+        return false;
+    }
+ 
+    for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+ 
+        // If values of same property are not equal,
+        // objects are not equivalent
+        if (a[propName] !== b[propName]) {
+            return false;
+        }
+    }
+ 
+    // If we made it this far, objects
+    // are considered equivalent
+    return true;
+}
+console.log(isObjectValueEqual(c[1],c[5]));
+var d=[]
+for(var i=0;i<c.length;i++){
+	for(var j=0;j<c.length;j++){
+		// console.log(isObjectValueEqual(c[i],c[j]));
+		if(isObjectValueEqual(c[i],c[j])){
+			d.push(c[i])
+		}
+	}
+}
+console.log(d)
+		})
+	</script>
+</html>
